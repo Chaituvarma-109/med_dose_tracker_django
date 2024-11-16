@@ -1,0 +1,30 @@
+<div class="navbar bg-base-100">
+    <div class="flex-1">
+        <a href="{% url 'index' %}" class="btn btn-ghost text-xl"
+            >Medicine Tracker</a
+        >
+    </div>
+    <div class="flex-none">
+        <ul class="menu menu-horizontal px-1">
+            {% if not user.is_authenticated %}
+            <li><a href="{% url 'signup' %}">Signup</a></li>
+            <li>
+                <a href="{% url 'login' %}">Login</a>
+            </li>
+            {% else %}
+            <li>
+                {% if user.is_authenticated %}
+                <h1>{{ user.username }}</h1>
+                <br />
+                {% endif %}
+            </li>
+            <li>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-xs btn-ghost">Logout</button>
+                </form>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>

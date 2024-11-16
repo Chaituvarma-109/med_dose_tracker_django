@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load daisyui_filters %}
+
+{% block content %}
+
+<div class="w-full max-w-2xl mx-auto mt-10">
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
+
+{% endblock %}
